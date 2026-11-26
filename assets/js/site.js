@@ -8,7 +8,9 @@
   const mobile = matchMedia("(max-width: 1040px)");
   const copy = document.querySelector("#copy");
   root.classList.add("js");
-  for (const button of [theme, menu, copy]) button.hidden = false;
+  for (const button of [theme, menu, copy]) {
+    if (button) button.hidden = false;
+  }
 
   function applyTheme(value) {
     root.dataset.theme = value === "dark" ? "dark" : "light";
@@ -173,7 +175,7 @@
     }
   }
 
-  copy.addEventListener("click", async () => {
+  if (copy) copy.addEventListener("click", async () => {
     const emailNode = document.querySelector("#email");
     const status = document.querySelector("#copy-msg");
     try {
